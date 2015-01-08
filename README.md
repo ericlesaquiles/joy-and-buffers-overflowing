@@ -6,13 +6,17 @@
 2. Ensure that the base configure script worked.
 
     `which gcc` and `which gdb` should locate each application properly. If not, please apt-get install both.
+
     `cat /proc/sys/kernel/randomize_va_space` should return 0. If not, please modify this value to be 0. This will disable [ASLR](https://en.wikipedia.org/wiki/Address_space_layout_randomization) in your virtual machine.
 
 3. Compile auth_overflow.c without canaries with the command:
 
     `gcc -g -o auth_overflow auth_overflow.c -fno-stack-protector`
+
     -g will add debugging hooks to the compiled program
+
     -o specifies the output program name as auth_overflow
+
     -fno-stack-protector disables the creation of [stack canaries](https://en.wikipedia.org/wiki/Stack_buffer_overflow#Stack_canaries)
 
 4. User buffer overflows on the program compiled in step 3 to force “Access Granted” to be printed on your screen.
