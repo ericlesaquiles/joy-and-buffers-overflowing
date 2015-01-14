@@ -1,9 +1,9 @@
+Skill Level: Beginner
+
 ##Value
-When learning about [fuzzing](https://en.wikipedia.org/wiki/Fuzz_testing) and security, it’s not enough to understand how to point and click with metasploit, which is what most tutorials out there cover. The goal of this exercise is to introduce players to the art of buffer overflow attacks. No meterpreter or metasploit. *Just the basics.* Players will walk away understanding memory addressing and how it is exploited with simple overflow techniques. The hope is that they will be able to follow conversations about “EIP Integrity” and take these basics to other languages and implementations.
+When learning about [fuzzing](https://en.wikipedia.org/wiki/Fuzz_testing) and security, it’s not enough to understand how to point and click with metasploit, which is what most tutorials out there cover. The goal of these exercises are to introduce players to the art of buffer overflow attacks. No meterpreter or metasploit. *Just the basics.* Players will walk away understanding memory addressing and how it is exploited with simple overflow techniques. The hope is that they will be able to follow conversations about “EIP Integrity” and take these basics to other languages and implementations.
 
 There are two buffer overflow exercises in this repo. The first exercise only uses authentication.c. The second uses the notetaker.c and notesearch.c code. I recommend following the exercises in that order.
-
-Skill Level: Beginner
 
 ##Requirements
 * Latest vagrant and virtualbox installation
