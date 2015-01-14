@@ -10,6 +10,7 @@ There are two buffer overflow exercises in this repo. The first exercise only us
 
 ##Authentiflow: Basic Buffer Overflow
 1. Run `vagrant up` and after provisioning, run `vagrant ssh` to enter the virtual machine.
+
 2. Ensure that the base configure script worked.
 
     * `which gcc` and `which gdb` should locate each application properly. If not, please apt-get install both.
@@ -26,16 +27,21 @@ There are two buffer overflow exercises in this repo. The first exercise only us
     * -fno-stack-protector disables the creation of [stack canaries](https://en.wikipedia.org/wiki/Stack_buffer_overflow#Stack_canaries)
 
 4. Run the program compiled in step 3 with some test values and then try to force “Access Granted” to be printed on your screen using a buffer overflow.
+
 5. Change the code in the program to be resistant to the overflow attack.
-6. Recompile your resistant code without canaries and ensure buffer overflows don’t work: 
+
+6. Recompile your resistant code without canaries and ensure buffer overflows don’t work:
 > `gcc -g -o authentication authentication.c -fno-stack-protector`
+
 7. Watch [this video]() on understanding function stack frames and basic gdb address examination.
-8. Identify the memory address location of the “print Access Granted” functionality using gdb.
-9. Use this address location to force your authentication program to print Access Granted.
+
+8. Use gdb to identify the memory address location of the “print Access Granted” functionality.
+
+9. Based on your knowledge of stack frames, use this address location to force your authentication program to print Access Granted.
 
     * Hint: “this_program” is a command line program that enjoys eating 0xdeadbeef.
 
-   > `$ echo -e “\xef\xbe\xad\xde” | ./this_program`
+   >> `$ echo -e “\xef\xbe\xad\xde” | ./this_program`
 
 ##Effectiflow: Effective user ids (euid), Environment Variables, and NOP Sleds
 1. Follow the first two steps in the Basic Buffer Overflow exercise above.
