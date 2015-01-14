@@ -1,9 +1,14 @@
+##Value
+When learning about [fuzzing](https://en.wikipedia.org/wiki/Fuzz_testing) and security, it’s not enough to understand how to point and click with metasploit, which is what most tutorials out there cover. The goal of this exercise is to introduce players to the art of buffer overflow attacks. No meterpreter or metasploit. *Just the basics.* Players will walk away understanding memory addressing and how it is exploited with simple overflow techniques. The hope is that they will be able to follow conversations about “EIP Integrity” and take these basics to other languages and implementations.
+
 There are two buffer overflow exercises in this repo. The first exercise only uses authentication.c. The second uses the notetaker.c and notesearch.c code. I recommend following the exercises in that order.
+
+Skill Level: Beginner
 
 ##Requirements
 * Latest vagrant and virtualbox installation
 
-##Authentiflow: The Basic Buffer Overflow
+##Authentiflow: Basic Buffer Overflow
 1. Run `vagrant up` and after provisioning, run `vagrant ssh` to enter the virtual machine.
 2. Ensure that the base configure script worked.
 
@@ -24,11 +29,9 @@ There are two buffer overflow exercises in this repo. The first exercise only us
 5. Change the code in the program to be resistant to the overflow attack.
 6. Recompile your resistant code without canaries and ensure buffer overflows don’t work: 
 > `gcc -g -o authentication authentication.c -fno-stack-protector`
-
-7. Watch [this video]() on understanding function stack frames.
-8. Watch [this video]() on understanding basic gdb address examination.
-7. Identify the memory address location of the “print Access Granted” functionality using gdb.
-8. Use this address location to force your authentication program to print Access Granted.
+7. Watch [this video]() on understanding function stack frames and basic gdb address examination.
+8. Identify the memory address location of the “print Access Granted” functionality using gdb.
+9. Use this address location to force your authentication program to print Access Granted.
 
     * Hint: “this_program” is a command line program that enjoys eating 0xdeadbeef.
 
@@ -43,7 +46,8 @@ How would you code differently to prevent buffer overflow attacks, given no cana
 
 ##So you think you’ve got it?
 ###Intermediate
-Use the notetaker file to write a new root user to /etc/passwd
+Use the notetaker file to write a new root user to /etc/passwd.
+These exercises were inspired by exercises from the book Hacking the Art of Exploitation by Jon Erickson. I highly recommend buying and reading it.
 
 ###Advanced
 Frolic in [narnia](https://overthewire.org/wargames/narnia).
