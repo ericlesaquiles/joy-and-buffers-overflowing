@@ -46,7 +46,10 @@ There are two buffer overflow exercises in this repo. The first exercise only us
 ##Effectiflow: Effective user ids (euid), Environment Variables, and NOP Sleds
 1. Follow the first two steps in the Basic Buffer Overflow exercise above.
 
-What did you learn?
+##Reflection
+Teach what you learned to someone else.
+
+What’s the worst that can happen?
 
 How would you code differently to prevent buffer overflow attacks, given no canaries or ASLR?
 
