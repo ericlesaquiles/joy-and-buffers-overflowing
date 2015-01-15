@@ -18,7 +18,7 @@ There are two buffer overflow exercises in this repo. The first exercise only us
     * `cat /proc/sys/kernel/randomize_va_space` should return 0. If not, please modify this value to be 0. This will disable [ASLR](https://en.wikipedia.org/wiki/Address_space_layout_randomization) in your virtual machine.
 
 3. Compile authentication.c without canaries with the command:
-> `gcc -g -o authentication authentication.c -fno-stack-protector`
+> `gcc -g -o authorization authorization.c -fno-stack-protector`
 
     * -g will add debugging hooks to the compiled program so that gdb can easily read it later
 
