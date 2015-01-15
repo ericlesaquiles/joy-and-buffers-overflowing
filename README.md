@@ -20,7 +20,7 @@ There are two buffer overflow exercises in this repo. The first exercise only us
 3. Compile authentication.c without canaries with the command:
 > `gcc -g -o authentication authentication.c -fno-stack-protector`
 
-    * -g will add debugging hooks to the compiled program
+    * -g will add debugging hooks to the compiled program so that gdb can easily read it later
 
     * -o specifies the output program name as authentication
 
@@ -41,7 +41,7 @@ There are two buffer overflow exercises in this repo. The first exercise only us
 
     * Hint: “this_program” is a command line program that enjoys eating 0xdeadbeef.
 
-   >> `$ echo -e “\xef\xbe\xad\xde” | ./this_program`
+   > `$ echo -e “\xef\xbe\xad\xde” | ./this_program`
 
 ##Effectiflow: Effective user ids (euid), Environment Variables, and NOP Sleds
 1. Follow the first two steps in the Basic Buffer Overflow exercise above.
