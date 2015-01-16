@@ -18,7 +18,7 @@ There are two buffer overflow exercises in this repo. The first exercise only us
     * `cat /proc/sys/kernel/randomize_va_space` should return 0. If not, please modify this value to be 0. This will disable [ASLR](https://en.wikipedia.org/wiki/Address_space_layout_randomization) in your virtual machine.
 
 3. Compile authentication.c without canaries with the command:
-    > `gcc -g -o authorization authorization.c -fno-stack-protector -m32`
+    `gcc -g -o authorization authorization.c -fno-stack-protector -m32`
 
     * -g will add debugging hooks to the compiled program so that gdb can easily read it later
 
@@ -29,14 +29,14 @@ There are two buffer overflow exercises in this repo. The first exercise only us
     * -m32 tells gcc to compile the code into a 32bit program which will make this tutorial easier
 
 4. Run the program compiled in step 3 with some test values
-    > `$ authentication testPassword`
+    `$ authentication testPassword`
 
     Then try to force “Access Granted” to be printed on your screen using a buffer overflow.
 
 5. Change the code in the “check_authorization” function to be resistant to the overflow attack without removing it from the program.
 
 6. Recompile your resistant code without canaries and ensure buffer overflows don’t work:
-> `gcc -g -o authentication authentication.c -fno-stack-protector -m32`
+    `gcc -g -o authentication authentication.c -fno-stack-protector -m32`
 
 7. Watch [this video]() on understanding function stack frames and basic gdb address examination.
 
@@ -46,7 +46,7 @@ There are two buffer overflow exercises in this repo. The first exercise only us
 
     * Hint: “this_program” is a command line program that enjoys eating 0xdeadbeef.
 
-   > `./this_program $(perl -e ‘print “\xef\xbe\xad\xde”’)`
+   `./this_program $(perl -e ‘print “\xef\xbe\xad\xde”’)`
 
 ##Effectiflow: Effective user ids (euid), Environment Variables, and NOP Sleds
 1. Follow the first two steps in the Basic Buffer Overflow exercise above.
