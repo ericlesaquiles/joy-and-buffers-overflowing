@@ -7,6 +7,7 @@ There are two buffer overflow exercises in this repo. The first exercise only us
 
 ##Requirements
 * Latest vagrant and virtualbox installation
+* Some C programming (If you are unfamiliar with C, don’t worry! The code example is very simple.)
 
 ##Authentiflow: Basic Buffer Overflow
 1. Run `vagrant up` and after provisioning, run `vagrant ssh` to enter the virtual machine.
