@@ -19,7 +19,7 @@ There are two buffer overflow exercises in this repo. The first exercise only us
 
 3. Compile authentication.c without canaries with the command:
     ```
-    gcc -g -o authorization authorization.c -fno-stack-protector -m32
+    $ gcc -g -o authorization authorization.c -fno-stack-protector -m32
     ```
 
     * -g will add debugging hooks to the compiled program so that gdb can easily read it later
@@ -41,7 +41,7 @@ There are two buffer overflow exercises in this repo. The first exercise only us
 
 6. Recompile your resistant code without canaries and ensure buffer overflows don’t work:
     ```
-    gcc -g -o authentication authentication.c -fno-stack-protector -m32
+    $ gcc -g -o authentication authentication.c -fno-stack-protector -m32
     ```
 
 7. Watch [this video]() on understanding function stack frames and basic gdb address examination.
@@ -79,7 +79,7 @@ There are two buffer overflow exercises in this repo. The first exercise only us
     * Hint: “this_program” is a command line program that enjoys eating 0xdeadbeef.
 
     ```
-    ./this_program $(perl -e ‘print “\xef\xbe\xad\xde”’)
+    $ ./this_program $(perl -e ‘print “\xef\xbe\xad\xde”’)
     ```
 
 ##Effectiflow: Effective user ids (euid), Environment Variables, and NOP Sleds
