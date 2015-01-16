@@ -51,23 +51,29 @@ There are two buffer overflow exercises in this repo. The first exercise only us
     GDB Cheatsheet
     ----
     ```
-    Examine 1 hexadecimal (x) word (w) at the variable x
+    To examine 1 hexadecimal (x) word (w) at the variable x
+
     gdb>x/1xw &x
-    Results in...
+
+    Results look like...
     [address of variable]: [one word of hexadecimale numbers]
     ```
 
     ```
-    Examine the variable x as a string (s)
+    To examine the variable x as a string (s)
+
     gdb>x/s &x
-    Results in...
+
+    Results look like...
     [address of variable]: [string representation of variable]
     ```
 
     ```
-    Examine 16 hexadecimal (x) bits (b) from the EIP register
+    To examine 16 hexadecimal (x) bits (b) from the EIP register
+
     gdb>x/16xb $eip
-    Results in...
+
+    Results look like...
     [starting address at EIP]: [four words of hexadecimale numbers]
     [starting address of this line]: [four words of hexadecimale numbers]
     [starting address of this line]: [four words of hexadecimale numbers]
