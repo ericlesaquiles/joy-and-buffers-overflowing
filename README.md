@@ -42,6 +42,26 @@ There are two buffer overflow exercises in this repo. The first exercise only us
 
 8. Use gdb to identify the memory address location of the “print Access Granted” functionality.
 
+    GDB Cheatsheet
+    ----
+    Examine 1 hexadecimal (x) word (w) at the variable x
+    gdb>x/1xw &x
+    Results in...
+    <address of variable>: <one word of hexadecimale numbers>
+
+    Examine the variable x as a string (s)
+    gdb>x/s &x
+    Results in...
+    <address of variable>: <string representation of variable>
+
+    Examine 16 hexadecimal (x) bits (b) from the EIP register
+    gdb>x/16xb $eip
+    Results in...
+    <starting address at EIP>: <four words of hexadecimale numbers>
+    <starting address of this line>: <four words of hexadecimale numbers>
+    <starting address of this line>: <four words of hexadecimale numbers>
+    <starting address of this line>: <four words of hexadecimale numbers>
+
 9. Based on your knowledge of stack frames, use this address location to force your authentication program to print Access Granted.
 
     * Hint: “this_program” is a command line program that enjoys eating 0xdeadbeef.
