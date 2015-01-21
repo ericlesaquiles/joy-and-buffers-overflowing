@@ -36,14 +36,14 @@ When learning about [fuzzing](https://en.wikipedia.org/wiki/Fuzz_testing) and se
 
     Then try to force “Access Granted” to be printed on your screen using a buffer overflow.
 
-5. Change the code in the “check_authorization” function to be resistant to the overflow attack without removing it from the program.
+5. Change the code in the “check_authorization” function to be resistant to the overflow attack without removing the function from the code entirely.
 
 6. Recompile your resistant code without canaries and ensure buffer overflows don’t work:
     ```
     $ gcc -g -o authentication authentication.c -fno-stack-protector -m32
     ```
 
-7. Watch [this video]() on understanding function stack frames and basic gdb address examination.
+7. Watch [this video]() **video is not up yet!*** on understanding function stack frames and basic gdb address examination.
 
 8. Use gdb to identify the memory address location of the “print Access Granted” functionality.
 
