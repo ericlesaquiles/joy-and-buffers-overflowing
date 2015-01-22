@@ -14,9 +14,7 @@ When learning about [fuzzing](https://en.wikipedia.org/wiki/Fuzz_testing) and se
 
     * `which gcc` and `which gdb` should locate each application properly. If not, please apt-get install both.
 
-    * `cat /proc/sys/kernel/randomize_va_space` should return 0. If not, please modify this value to be 0. This will disable [ASLR](https://en.wikipedia.org/wiki/Address_space_layout_randomization) in your virtual machine.
-
-3. Compile authentication.c without canaries with the command:
+3. Compile authorization.c without canaries with the command:
     ```
     $ gcc -g -o authorization authorization.c -fno-stack-protector -m32
     ```
