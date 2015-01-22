@@ -7,7 +7,7 @@ When learning about [fuzzing](https://en.wikipedia.org/wiki/Fuzz_testing) and se
 * Latest vagrant and virtualbox installation
 * Some C programming (If you are unfamiliar with C, don’t worry! The code example is very simple.)
 
-##Authentiflow: Basic Buffer Overflow
+##Authoriflow: Basic Buffer Overflow
 1. Run `vagrant up` and after provisioning, run `vagrant ssh` to enter the virtual machine.
 
 2. Ensure that the base configure script worked.
@@ -21,7 +21,7 @@ When learning about [fuzzing](https://en.wikipedia.org/wiki/Fuzz_testing) and se
 
     * -g will add debugging hooks to the compiled program so that gdb can easily read it later
 
-    * -o specifies the output program name as authentication
+    * -o specifies the output program name as authorization
 
     * -fno-stack-protector disables the creation of [stack canaries](https://en.wikipedia.org/wiki/Stack_buffer_overflow#Stack_canaries)
 
@@ -29,7 +29,7 @@ When learning about [fuzzing](https://en.wikipedia.org/wiki/Fuzz_testing) and se
 
 4. Run the program compiled in step 3 with some test values
     ```
-    $ authentication testPassword
+    $ authorization testPassword
     ```
 
     Then try to force “Access Granted” to be printed on your screen using a buffer overflow.
@@ -38,7 +38,7 @@ When learning about [fuzzing](https://en.wikipedia.org/wiki/Fuzz_testing) and se
 
 6. Recompile your resistant code without canaries and ensure buffer overflows don’t work:
     ```
-    $ gcc -g -o authentication authentication.c -fno-stack-protector -m32
+    $ gcc -g -o authorization authorization.c -fno-stack-protector -m32
     ```
 
 7. Watch [this video]() **video is not up yet!*** on understanding function stack frames and basic gdb address examination.
@@ -77,7 +77,7 @@ When learning about [fuzzing](https://en.wikipedia.org/wiki/Fuzz_testing) and se
     [starting address of this line]: [four words of hexadecimale numbers]
     ```
 
-9. Based on your knowledge of stack frames, use this address location to force your authentication program to print Access Granted.
+9. Based on your knowledge of stack frames, use this address location to force your authorization program to print Access Granted.
 
     * Hint: “this_program” is a command line program that enjoys eating 0xdeadbeef.
 
