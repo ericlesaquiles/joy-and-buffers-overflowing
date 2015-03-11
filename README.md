@@ -57,16 +57,18 @@ When learning about [fuzzing](https://en.wikipedia.org/wiki/Fuzz_testing) and se
 
 7. Next, you will need to understand how memory segmentation and stack frames work.
     1. Watch [this video](http://youtu.be/R2gqR-ToHDc) on memory segmentation. In step 6 above, you used gdb to look through the “Text” section which contains the code instructions for the program.
-    2. Before watching [this video](http://youtu.be/A3cIpGgS0Kw) on stack frames, you will need to know these acronymns:
+    2. Before watching [this video](http://youtu.be/A3cIpGgS0Kw) on stack frames, you will need to know these acronyms:
 
     * EIP - The instruction pointer. It will run whatever instruction it points to. Gaining control of the EIP pointer is crucial to exploiting code through memory corruption because then you can force execution of code that you control.
     * EBP - The base pointer of the current stack frame. This points at the bottom of the current function frame. This pointer and the ESP pointer make a sandwitch to contain the variable context of the function that is currently being executed by the EIP pointer.
-    * ESP - The stack pointer. This points to the top of the current function frame. When a program starts executing a function, this pointer location is established after establishing how much variable memory is needed for the execution of the function.
-    * SFP - The save frame pointer. This pointer exists within a stack frame, and it points to the location of the old EBP for when the function finishes.
+    * ESP - The stack pointer. This points to the top of the current function frame. When a program starts executing a function, this pointer location is established after the system decides how much variable memory is needed for the execution of the function.
+    * SFP - The save frame pointer. This pointer exists within a stack frame, and it points to the location of the old EBP. It will replace the current EBP when the function finishes.
 
     Pay particular attention to the different segments of the stack frame and which ones will give you control of the EIP pointer.
 
-8. With gdb, navigate into the check_authorization function and use the location of the ESP register to locate the address of the next assembly instruction that EIP will use after check_authorization finishes. This is what you want to overwrite with the address to the “print Access Granted” function. You can use [this video](http://youtu.be/z3c-OmczCqc) as a reference to help you set breakpoints with gdb and analyze the variables within the check_authorization function. Note: the code in the video is not the exact same code as in authorization2.c but the techniques for analyzing it will be the same.
+8. With gdb, navigate into the check_authorization function and use the location of the ESP register to locate the address of the next assembly instruction that EIP will use after check_authorization finishes. This is what you want to overwrite with the address to the “print Access Granted” function. You can use [this video](http://youtu.be/z3c-OmczCqc) as a reference to help you set breakpoints with gdb and analyze the variables within the check_authorization function.
+
+Note: the code in the video is not the exact same code as in authorization2.c but the techniques for analyzing it will be the same.
 
     GDB Cheatsheet
     ----
@@ -100,7 +102,7 @@ When learning about [fuzzing](https://en.wikipedia.org/wiki/Fuzz_testing) and se
     [starting address of this line]: [four words of hexadecimale numbers]
     ```
 
-9. Based on the knowledge you gained in the previous steps, address location that you discovered in step 8 to force your authorization program to print Access Granted. If you are having a hard time, don’t give up. It’s supposed to be difficult. When you get “Access Granted” to print this way, buy yourself a drink. :)
+9. Based on the knowledge you gained in the previous steps, use the address location that you discovered in step 8 to force your authorization program to print “Access Granted”. If you are having a hard time, don’t give up. It’s supposed to be difficult. When you get “Access Granted” to print this way, buy yourself a drink. :)
 
     * Hint: Pretend that the authorization2 program enjoys eating 0xdeadbeef. How would you feed it?
 
@@ -108,13 +110,13 @@ When learning about [fuzzing](https://en.wikipedia.org/wiki/Fuzz_testing) and se
     $ ./authorization2 $(perl -e ‘print “\xef\xbe\xad\xde”’)
     ```
 
-    Look up Little Endian.
+    (*cough* Little Endian. *cough*)
 
 ##Reflection
-Interestingly, the code execution system allowed a user to compromise the program with a bufferoverflow. Unless you are aware of the unsafe ways to use functions like strcpy, you could be compromised with the same attack. Today, we have implemented systems like stack canaries to protect unsuspecting developers a little better.
+Interestingly, when the code execution system was created, it allowed a user to compromise the program with a buffer overflow. Unless you are aware of the unsafe ways to use functions like strcpy, you could be compromised with the same attack. Today, we have implemented systems like stack canaries to protect unsuspecting developers a little better.
 
 How would you code differently to prevent buffer overflow attacks (given no canaries)?
 
-These exercises were inspired by lessons from the book Hacking the Art of Exploitation by Jon Erickson, and they are only the beginning to understanding memory exploitation. If you thought this session was interesting, I highly recommend buying and reading it.
+These exercises were inspired by lessons from the book Hacking the Art of Exploitation by Jon Erickson, and they are only the beginning when it comes to understanding memory exploitation. If you thought this session was interesting, I highly recommend buying and reading the book.
 
-Thanks for trying this workshop! I’m open to any and all feedback and suggestions. The hope is that this will make understanding security easier for everyone so that the root causes of vulnerabilites will be widely known. That way more people will contribute to making software systems secure at their core into the future, instead of adding complexity through layers of patches.
+Thanks for trying this workshop! I’m open to any and all feedback and suggestions. The hope is that this will help make understanding security easier for everyone by making the root causes of systematic vulnerabilities widely known. That way more people will contribute to making the software environment secure at their core into the future instead of adding complexity through layers of patches.
