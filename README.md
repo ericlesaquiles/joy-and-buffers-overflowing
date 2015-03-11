@@ -47,6 +47,7 @@ When learning about [fuzzing](https://en.wikipedia.org/wiki/Fuzz_testing) and se
     Can the method you used in step 4 be used with authorization2 to force “Access Granted” to be printed? If not, why?
 
 6. Authorization2 is still vulnerable, and we can force the program to print “Access Granted” through different means. In order to do this, you will need to identify the memory address of the “print Access Granted” function and the memory address of the assembly instruction after call_authorization. Use [this video](http://youtu.be/WvdBr-Z1w-o) as a reference. Keep these addresses for step 8.
+
     Note: This is how you start the authorization2 program with gdb in order to get to the prompt in the video above:
     ```
     $ gdb -q authorization2
